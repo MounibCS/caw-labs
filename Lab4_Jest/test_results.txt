@@ -1,0 +1,28 @@
+PS C:\Users\windows\Desktop\caw\caw-labs\Lab4_Jest> npx jest
+ PASS  exo1/echo.test.js
+ FAIL  exo2/functions.test.js
+  ● Functions Tests › first(array, null) should return the first element
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 10
+    Received: []
+
+       9 |     });
+      10 |     test('first(array, null) should return the first element', () => {
+    > 11 |         expect(first(data, null)).toBe(10);
+         |                                   ^
+      12 |     });
+      13 |     test('first(array, 0) should return empty array', () => {
+      14 |         expect(first(data, 0)).toEqual([]);
+
+      at Object.toBe (exo2/functions.test.js:11:35)
+
+ PASS  exo1/notation.test.js
+ PASS  exo1/fileImport.test.js
+
+Test Suites: 1 failed, 3 passed, 4 total
+Tests:       1 failed, 17 passed, 18 total
+Snapshots:   0 total
+Time:        1.448 s
+Ran all test suites.
