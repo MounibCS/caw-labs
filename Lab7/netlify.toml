@@ -1,0 +1,14 @@
+[build]
+  # The path to your app folder from the repo root
+  base = "frontend" 
+  
+  # The command to run inside that folder
+  command = "npm run build"
+  
+  # The folder created after building (relative to 'base')
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
