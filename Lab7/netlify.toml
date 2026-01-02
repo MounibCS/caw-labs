@@ -1,6 +1,6 @@
 [build]
   # The path to your app folder from the repo root
-  base = "frontend" 
+  base = "Lab7" 
   
   # The command to run inside that folder
   command = "npm run build"
