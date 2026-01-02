@@ -1,0 +1,180 @@
+.detailsButton {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    background-color: hsl(var(--background) / 0.8);
+    color: #bae6fd;
+    /* sky-200 */
+}
+
+.detailsButton:hover {
+    background-color: hsl(var(--background) / 0.95);
+}
+
+.skeletonLoader {
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.05) 25%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 75%);
+    background-size: 200% 100%;
+    animation: skeletonLoading 1.5s infinite;
+}
+
+@keyframes skeletonLoading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.animusContainer {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.animusCanvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    max-width: none !important;
+    max-height: none !important;
+}
+
+.navWrapper {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Inter', sans-serif;
+    width: auto;
+    min-width: 320px;
+    z-index: 100;
+}
+
+.navIndicator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    padding: 8px 12px;
+    background: none;
+    border: none;
+    font-family: inherit;
+    outline: none;
+}
+
+.navItem:hover {
+    opacity: 0.8;
+}
+
+.label {
+    font-size: 13px;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.sep {
+    margin: 0 4px;
+    opacity: 0.6;
+    color: #C0D0E0;
+    pointer-events: none;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    border: 2px solid #C0D0E0;
+    background: transparent;
+}
+
+.dot.active {
+    background: #A03030;
+    border-color: #A03030;
+    color: #A03030;
+}
+
+.dot.active::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0.6;
+    animation: ripple 1.6s ease-out infinite;
+}
+
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0.6);
+        opacity: 0.6;
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(1.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0.6);
+        opacity: 0;
+    }
+}
+
+/* Portrait Mobile View - Flip Orientation */
+@media (orientation: portrait) {
+    .animusContainer {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .navWrapper {
+        width: 100%;
+        min-width: unset;
+        bottom: 20px;
+        padding: 0 10px;
+    }
+
+    .navIndicator {
+        width: 100%;
+        justify-content: space-evenly;
+        gap: 0;
+    }
+
+    .sep {
+        display: none;
+    }
+
+    .label {
+        font-size: 12px;
+    }
+}
