@@ -57,5 +57,36 @@ export const PROJECT_DATA: ProjectData[] = [
             imageSrc: "/rl-ds-trades-bumper.jpg",
             projectKey: "rl-ds"
         }
+    },
+    {
+        name: "Caw Labs",
+        key: "caw-labs",
+        features: [
+            "HTML, CSS & JavaScript Fundamentals",
+            "Advanced JavaScript Concepts",
+            "React Framework Basics",
+            "React Router & Single-Page Applications",
+            "Web Development Tools Training",
+            "React-Based Mini Project"
+        ],
+        viewport: {
+            title: "COURSE & WORKSHOP REPOSITORY",
+            specs: [
+                "Course: Web Application Design (CAW)",
+                "Instructor: Dr. CHEKATI A.",
+                "Focus: Frontend & React Development"
+            ],
+            linkHref: "https://github.com/MounibCS/caw-labs/tree/main"
+        }
+    },
+    {
+        name: "Kanban Board",
+        key: "kanban",
+        features: ["React + Vite Implementation", "Drag & Drop (dnd-kit)", "Tailwind CSS Styling", "Column-based Organization", "Task Management System"],
+        viewport: {
+            title: "KANBAN TASK BOARD",
+            specs: ["Stack: React/Vite", "State: Local/Dnd", "Deploy: Netlify"],
+            linkHref: 'https://kanbanboardcaw.netlify.app/'
+        }
     }
 ];
