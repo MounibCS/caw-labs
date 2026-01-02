@@ -1,0 +1,245 @@
+/* Standard CSS Reset & Variables */
+:root {
+  --background: 203 30% 15%;
+  --foreground: 206 14% 80%;
+  --card: 203 30% 13%;
+  --card-foreground: 206 14% 85%;
+  --popover: 203 30% 12%;
+  --popover-foreground: 206 14% 90%;
+  --primary: 203 28% 40%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 203 18% 75%;
+  --secondary-foreground: 203 18% 15%;
+  --muted: 203 12% 19%;
+  --muted-foreground: 203 12% 69%;
+  --accent: 203 30% 30%;
+  --accent-foreground: 203 30% 90%;
+  --destructive: 6 83% 54%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 203 20% 20%;
+  --input: 203 20% 23%;
+  --ring: 203 28% 40%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 203 30% 15%;
+  --foreground: 206 14% 80%;
+}
+
+/* Base Styles */
+* {
+  border-color: hsl(var(--border));
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  /* Prevent scroll for 3D scene */
+  font-family: 'Inter', sans-serif;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.app-main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  position: relative;
+}
+
+/* Cloud Animation */
+@keyframes cloudScroll {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+
+  100% {
+    background-position: 100px 100px, 150px 80px, 200px 150px;
+  }
+}
+
+.animate-clouds {
+  animation: cloudScroll 60s linear infinite;
+}
+
+/* Custom Classes from original */
+.cloud {
+  background: radial-gradient(circle at 30% 40%, rgba(200, 200, 200, 0.3) 20%, transparent 70%),
+    radial-gradient(circle at 70% 50%, rgba(180, 180, 180, 0.2) 20%, transparent 60%),
+    radial-gradient(circle at 50% 60%, rgba(220, 220, 220, 0.25) 25%, transparent 70%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* Loading Screen */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(1200px 800px at 50% 40%, rgba(5, 5, 7, 1) 0%, rgba(5, 5, 7, 0.95) 60%, rgba(5, 5, 7, 1) 100%);
+  z-index: 50;
+  overflow: hidden;
+}
+
+.loading-backdrop {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 180deg at 50% 50%, rgba(192, 208, 224, 0.06), transparent 25%, rgba(160, 48, 48, 0.06) 50%, transparent 75%, rgba(192, 208, 224, 0.06));
+  filter: blur(40px);
+  opacity: 0.7;
+  animation: floatGlow 10s linear infinite;
+}
+
+.loading-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 28px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(218, 229, 229, 0.08), rgba(218, 229, 229, 0.06));
+  border: 1px solid rgba(192, 208, 224, 0.25);
+  box-shadow: 0 10px 40px rgba(192, 208, 224, 0.18), inset 0 1px 0 rgba(218, 229, 229, 0.08);
+  transform: translateZ(0);
+}
+
+.loading-brand {
+  letter-spacing: 0.32em;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #DAE5E5;
+  text-shadow: 0 0 12px rgba(192, 208, 224, 0.35);
+}
+
+.loading-status {
+  font-family: monospace;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.status-prefix {
+  color: #DAE5E5;
+  opacity: 0.9;
+}
+
+.status-main {
+  color: #A03030;
+}
+
+.status-ellipses span {
+  animation: blink 1.4s infinite steps(1, end);
+}
+
+.status-ellipses span:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.status-ellipses span:nth-child(3) {
+  animation-delay: .4s;
+}
+
+.loading-bar {
+  width: 320px;
+  height: 10px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, rgba(192, 208, 224, 0.12), rgba(192, 208, 224, 0.08));
+  border: 1px solid rgba(192, 208, 224, 0.25);
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg, rgba(192, 208, 224, 0.12), rgba(192, 208, 224, 0.8), rgba(192, 208, 224, 0.12));
+  box-shadow: 0 0 20px rgba(192, 208, 224, 0.45);
+  border-right: 1px solid #C0D0E0;
+  animation: loadFlow 2.2s ease-in-out infinite;
+}
+
+.loading-hint {
+  font-size: 0.75rem;
+  color: rgba(218, 229, 229, 0.75);
+  letter-spacing: 0.06em;
+}
+
+.loading-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 2px,
+      transparent 4px);
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+  animation: scan 7s linear infinite;
+}
+
+.loading-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(1200px 800px at 50% 40%, transparent 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.35) 100%);
+  pointer-events: none;
+}
+
+@keyframes loadFlow {
+  0% {
+    transform: translateX(-60%);
+  }
+
+  50% {
+    transform: translateX(40%);
+  }
+
+  100% {
+    transform: translateX(160%);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes scan {
+  0% {
+    background-position-y: 0;
+  }
+
+  100% {
+    background-position-y: 100%;
+  }
+}
+
+@keyframes floatGlow {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
